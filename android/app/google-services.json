@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "475743573953",
+    "firebase_url": "https://gambil.firebaseio.com",
+    "project_id": "gambil",
+    "storage_bucket": "gambil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475743573953:android:0a13ca72aa9af84b770140",
+        "android_client_info": {
+          "package_name": "com.gumbil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475743573953-uavu9s1cveoqo8h68lbgt6p9058iipkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj9oyO20JvAaSKiwL6HmTvmXqRrbXro38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475743573953-uavu9s1cveoqo8h68lbgt6p9058iipkp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "475743573953-1qhkl7a22vu986s1b9egs1cgae2hcqt3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gambil"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
