@@ -67,7 +67,7 @@ export default class signUp extends Component {
           email: user2.email,
           password: user2.password
         });
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('Login')
       })
       .catch(error => this.setState({ errorMessage: error.message }))
 
@@ -259,8 +259,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     color: '#9b9b9b',
     paddingRight: 15
-    //Set background color of Text Input.
-    //backgroundColor : "#FFFFFF"
+  
   },
   container: {
     // flex: 1,

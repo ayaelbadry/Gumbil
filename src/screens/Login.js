@@ -1,13 +1,25 @@
 import React,{Component} from 'react'
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from 'react-native'
 import firebase from 'react-native-firebase';
-
-import styles from './style'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Fonts } from '../utilis/Fonts';
 export default class Login extends Component {
+  toggleDrawer = () => {
+    //Props to open/close the drawer
+    this.props.navigationProps.toggleDrawer();
+  };
   static navigationOptions = () => {
     return {
-      title: 'Login'
-
+      headerTitle: (<Text style={{ paddingRight: 20, color: '#fff', fontSize: 25, fontFamily: Fonts.ElMessiri, fontWeight: 'normal', flex: 1 }}>دخول</Text>),
+      headerRight: null,
+      headerLeft: null,
+      headerTitleStyle: {
+        alignSelf: 'right',
+      },
+      headerStyle: {
+        backgroundColor: '#DE1020',
+        
+      }
     };
   }
   state = { email: '', password: '', errorMessage: null }
@@ -24,7 +36,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color:'#e93766', fontSize: 40}}>Login</Text>
+        <Image source={require('../assets/image/img.png')} style={styles.imageStyle} />
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -32,7 +44,7 @@ export default class Login extends Component {
         <TextInput
           style={styles.textInput}
           autoCapitalize="none"
-          placeholder="Email"
+          placeholder="البريد الالكتروني"
           onChangeText={email => this.setState({ email })}
           value={this.state.email}
         />
@@ -40,15 +52,64 @@ export default class Login extends Component {
           secureTextEntry
           style={styles.textInput}
           autoCapitalize="none"
-          placeholder="Password"
+          placeholder="كلمة المرور"
           onChangeText={password => this.setState({ password })}
           value={this.state.password}
         />
-        <Button title="Login" color="#e93766" onPress={this.handleLogin} />
+          <TouchableOpacity style={styles.loginStyle} onPress={this.handleLogin}>
+            <Text style={styles.buttonText}>دخول</Text>
+          </TouchableOpacity>
+       
         <View>
-        <Text> Don't have an account? <Text onPress={() => this.props.navigation.navigate('SignUp')} style={{color:'#e93766', fontSize: 18}}> Sign Up </Text></Text>
+        <Text style={styles.textStyle}> ليس لديك حساب ؟ <Text style={styles.textStyle} onPress={() => this.props.navigation.navigate('SignUp')} style={{color:'#DE1020', fontSize: 18}}> تسجيل </Text></Text>
         </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor:'#9b9b9b',
+    width: '80%',
+    height: 50,
+    marginBottom: 20,
+    textAlign: 'right',
+    paddingRight: 15,
+    color: '#9b9b9b',
+    fontSize: 22,
+  },
+  textStyle: {
+    fontFamily: Fonts.BalooBhaijaan, 
+    
+    textAlign: 'right'
+    
+  },
+  loginStyle: {
+    width: '80%',
+    backgroundColor: '#21BD37',
+    borderRadius: 30,
+    height: 50,
+    fontSize: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 25,
+    fontFamily: Fonts.BalooBhaijaan
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  imageStyle: {
+    marginBottom: 70,
+    width: 200,
+    height: 100
+
+  },
+})

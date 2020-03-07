@@ -6,6 +6,7 @@ import Icon  from '../assets/icons/icons';
 import { Fonts } from '../utilis/Fonts'
 import { SearchBar } from 'react-native-elements';
 import SignUp from './SignUp'
+import { DrawerActions } from 'react-navigation-drawer';
 
 
 export default class Home extends Component {
@@ -18,8 +19,9 @@ export default class Home extends Component {
       headerTitle: (<Image style={{ width: 30, height: 50, flex: 1, marginLeft: 30}} resizeMode="contain" source={require('../assets/image/Logo.png')} />),
       headerLeft: null,
       headerRight: (
-        <TouchableOpacity onPress = {navigation.openDrawer}>
-          <Image style={{ width: 30, height: 30, marginRight: 20}}  source={require('../assets/image/drawer.png')}/>
+        <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())} >
+          
+          <Image style={{ width: 30, height: 30, marginRight: 20}}  source={require('../assets/image/drawer.png')}  />
         </TouchableOpacity>
       ),
       headerTitleStyle: {
@@ -49,10 +51,19 @@ _onShowUnderlay() {
     const { currentUser } = firebase.auth()
 
     this.setState({ currentUser })
-    this.props.navigation.setParams({ openDrawer: this.openDrawer })
+   // this.props.navigation.setParams({ openDrawer: this.openDrawer })
     this.props.navigation.setParams({ renderSideMenu: this.renderSideMenu })
 
   }
+  // sign out method 
+  signOutUser = async () => {
+    try {
+        await firebase.auth().signOut();
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 
 
   render() {

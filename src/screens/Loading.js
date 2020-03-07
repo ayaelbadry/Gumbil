@@ -5,7 +5,7 @@ import firebase from 'react-native-firebase';
 export default class Loading extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Loading'
+       title: null
     };
   }
     componentDidMount() {
@@ -17,8 +17,7 @@ export default class Loading extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <Text style={{color:'#e93766', fontSize: 40}}>Loading</Text>
-          <ActivityIndicator color='#e93766' size="large" />
+          <ActivityIndicator color='#DE1020' size="large" />
       </View>
     )
   }
